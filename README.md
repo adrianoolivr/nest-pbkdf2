@@ -69,7 +69,7 @@ export class YourService{
 		return await this.pbkdf2Service.hash(text);
 	}
 
-	async compare(password: string, hash: string): Promise<string> {
+	async compare(password: string, hash: string): Promise<boolean> {
 		return await this.pbkdf2Service.compare(password, hash);
 	}
 
@@ -77,7 +77,7 @@ export class YourService{
 		return this.pbkdf2Service.hash(text);
 	}
 
-	compareSync(password: string, hash: string): string {
+	compareSync(password: string, hash: string): boolean {
 		return this.pbkdf2Service.compare(password, hash);
 	}
 }
