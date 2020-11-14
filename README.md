@@ -69,13 +69,13 @@ export class YourService{
 		return await this.pbkdf2Service.hash(text);
 	}
 
-	async compare(password: string, hash: string): Promise<boolean> {
-		return await this.pbkdf2Service.compare(password, hash);
+	hashSync(text: string): string {
+    return this.pbkdf2Service.hash(text);
 	}
 
-	hashSync(text: string): string {
-		return this.pbkdf2Service.hash(text);
-	}
+  async compare(password: string, hash: string): Promise<boolean> {
+    return await this.pbkdf2Service.compare(password, hash);
+  }
 
 	compareSync(password: string, hash: string): boolean {
 		return this.pbkdf2Service.compare(password, hash);
