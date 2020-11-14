@@ -11,7 +11,7 @@
   <a href="https://www.npmjs.com/package/nest-pbkdf2"><img src="https://img.shields.io/npm/dw/nest-pbkdf2.svg" alt="NPM downloads" /></a>
   <a href="https://github.com/adrianoolivr/nest-pbkdf2/issues"><img src="https://img.shields.io/github/issues/adrianoolivr/nest-pbkdf2.svg" alt="GitHub issues" /></a>
   <a href="https://david-dm.org/adrianoolivr/nest-pbkdf2"><img src="https://img.shields.io/david/adrianoolivr/nest-pbkdf2.svg" alt="dependencies status"></a>
-  <a href="https://david-dm.org/adrianoolivr/nest-pbkdf2?type=dev"><img src="https://david-dm.org/adrianoolivr/nest-pbkdf2/dev-status.svg" alt="devDependencies status" /></a>
+  <!-- <a href="https://david-dm.org/adrianoolivr/nest-pbkdf2?type=dev"><img src="https://david-dm.org/adrianoolivr/nest-pbkdf2/dev-status.svg" alt="devDependencies status" /></a> -->
 </p>
 
 ## Installation
@@ -42,7 +42,7 @@ app.module.ts
 			// Default values
 			hashBytes: 32, /* optional */
 			saltBytes: 16, /* optional */
-			digest: 'sha512', /* optional */
+      digest: 'sha512', /* optional */
       iterations: 65535, /* optional */
       encoding: 'hex', /* optional */
 		}),
