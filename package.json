@@ -1,6 +1,6 @@
 {
   "name": "nest-pbkdf2",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The PBKDF2 NestJS module for hash and compare passwords",
   "author": "Adriano Oliveira",
   "main": "dist/index.js",
