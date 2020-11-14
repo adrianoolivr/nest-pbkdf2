@@ -8,6 +8,7 @@ export class Pbkdf2Service {
   private readonly hashBytes: number;
   private readonly saltBytes: number;
   private readonly iterations: number;
+  private readonly encoding: BufferEncoding;
 
   constructor(
     @Inject('PBKDF2_OPTIONS') private readonly options: Pbkdf2ModuleOptions,
@@ -16,6 +17,7 @@ export class Pbkdf2Service {
     this.hashBytes = options.hashBytes || 32;
     this.saltBytes = options.saltBytes || 16;
     this.iterations = options.iterations || 65535;
+    this.encoding = options.encoding || 'hex';
   }
 
   hash(
@@ -24,6 +26,7 @@ export class Pbkdf2Service {
     iterations: number = this.iterations,
     hashBytes: number = this.hashBytes,
     digest: string = this.digest,
+    encoding: BufferEncoding = this.encoding,
   ): Promise<string> {
     return new Promise((resolve, reject) => {
       crypto.randomBytes(saltBytes, function (err, salt) {
@@ -45,7 +48,7 @@ export class Pbkdf2Service {
 
             salt.copy(combined, 8);
             hash.copy(combined, salt.length + 8);
-            return resolve(combined.toString('base64'));
+            return resolve(combined.toString(encoding));
           },
         );
       });
@@ -56,9 +59,10 @@ export class Pbkdf2Service {
     password: string,
     combined: string,
     digest: string = this.digest,
+    encoding: BufferEncoding = this.encoding,
   ): Promise<boolean> {
     return new Promise((resolve, reject) => {
-      let buffer = Buffer.from(combined, 'base64');
+      let buffer = Buffer.from(combined, encoding);
       let saltBytes = buffer.readUInt32BE(0);
       let hashBytes = buffer.length - saltBytes - 8;
       let iterations = buffer.readUInt32BE(4);
@@ -84,6 +88,7 @@ export class Pbkdf2Service {
     iterations: number = this.iterations,
     hashBytes: number = this.hashBytes,
     digest: string = this.digest,
+    encoding: BufferEncoding = this.encoding,
   ): string {
     const salt = crypto.randomBytes(saltBytes);
     const hash = crypto.pbkdf2Sync(
@@ -100,15 +105,16 @@ export class Pbkdf2Service {
 
     salt.copy(combined, 8);
     hash.copy(combined, salt.length + 8);
-    return combined.toString('base64');
+    return combined.toString(encoding);
   }
 
   compareSync(
     password: string,
     combined: string,
     digest: string = this.digest,
+    encoding: BufferEncoding = this.encoding,
   ): boolean {
-    const buffer = Buffer.from(combined, 'base64');
+    const buffer = Buffer.from(combined, encoding);
     const saltBytes = buffer.readUInt32BE(0);
     const hashBytes = buffer.length - saltBytes - 8;
     const iterations = buffer.readUInt32BE(4);

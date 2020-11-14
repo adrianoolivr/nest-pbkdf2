@@ -1,10 +1,11 @@
-import { ModuleMetadata, Type } from "@nestjs/common";
+import { ModuleMetadata, Type } from '@nestjs/common';
 
 export type Pbkdf2ModuleOptions = {
   digest?: string;
   hashBytes?: number;
   saltBytes?: number;
   iterations?: number;
+  encoding?: BufferEncoding;
 };
 
 export interface Pbkdf2ModuleOptionsFactory {
@@ -14,7 +15,7 @@ export interface Pbkdf2ModuleOptionsFactory {
 }
 
 export interface Pbkdf2ModuleAsyncOptions
-  extends Pick<ModuleMetadata, "imports"> {
+  extends Pick<ModuleMetadata, 'imports'> {
   useFactory?: (
     ...args: any[]
   ) => Promise<Pbkdf2ModuleOptions> | Pbkdf2ModuleOptions;
