@@ -42,9 +42,9 @@ app.module.ts
 			// Default values
 			hashBytes: 32, /* optional */
 			saltBytes: 16, /* optional */
-      digest: 'sha512', /* optional */
-      iterations: 65535, /* optional */
-      encoding: 'hex', /* optional */
+			digest: 'sha512', /* optional */
+			iterations: 65535, /* optional */
+			encoding: 'hex', /* optional */
 		}),
 		...
 		// For asynchronous configuration

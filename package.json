@@ -26,10 +26,16 @@
     "type": "git",
     "url": "https://github.com/adrianoolivr/nest-pbkdf2"
   },
-  "homepage": {
-    "url": "https://github.com/adrianoolivr/nest-pbkdf2#readme"
-  },
+  "homepage": "https://github.com/adrianoolivr/nest-pbkdf2#readme",
   "bugs": {
     "url": "https://github.com/adrianoolivr/nest-pbkdf2/issues"
-  }
+  },
+  "keywords": [
+    "pbkdf2",
+    "nestjs",
+    "nest",
+    "password",
+    "compare",
+    "hash"
+  ]
 }
